@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoCampus</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <i class="fa-solid fa-car-side"></i>
+ GoCampus
+    </div>
+
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#solucao">Solução</a>
+      <a href="#faq">FAQ</a>
+      <button id="sairBtn">Sair</button>
+      <a href="#participar" class="btn-participar">Quero Participar <i class="fa-solid fa-arrow-right"></i></a>
+    </nav>
+  </header>
+
+  <section class="hero" id="sobre">
+    <div class="hero-text">
+      <span class="tag">UNIVERSITÁRIO PARA UNIVERSITÁRIO</span>
+
+      <h1>Caronas Inteligentes <br>para o campus</h1>
+
+      <p>
+        Conectamos alunos de graduação com segurança. Valide sua identidade acadêmica
+        e encontre rotas otimizadas para chegar em casa com tranquilidade.
+      </p>
+
+      <div class="hero-buttons">
+  <button id="btnOferecer">Oferecer carona</button>
+  <button id="btnBuscar" class="outline">Buscar carona</button>
+</div>
+<div id="caronaBox" class="carona-box"></div>
+
+      <div class="stats">
+        <div>
+          <strong>78%</strong>
+          <p>economia média mensal</p>
+        </div>
+        <div>
+          <strong>100%</strong>
+          <p>perfis verificados</p>
+        </div>
+        <div>
+          <strong>1.2k+</strong>
+          <p>caronas este mês</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-preview">
+      <div class="dash-top">
+        <div>
+          <span></span><span></span><span></span>
+        </div>
+        <p>DASH PREVIEW</p>
+      </div>
+
+      <div class="dash-content">
+        <div class="route-card">
+          <div class="avatar">RA</div>
+          <div>
+            <h3>Match Encontrado!</h3>
+            <p>Ricardo está a 2 min do seu bloco.</p>
+          </div>
+          <button>Confirmar</button>
+        </div>
+
+        <div class="mini-info">
+          <div>
+            <strong>Campus</strong>
+            <p>Unijorge</p>
+          </div>
+          <div>
+            <strong>Chegada</strong>
+            <p>18:40</p>
+          </div>
+          <div>
+            <strong>Rota</strong>
+            <p>Otimizada</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="beneficios" id="solucao">
+    <h2>Por que o RideAcad?</h2>
+    <p>Tecnologia de ponta para resolver o transporte universitário.</p>
+
+    <div class="cards">
+      <div class="card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Agilidade no Match</h3>
+        <p>Sugestões baseadas na sua grade horária e localização.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h3>Segurança Total</h3>
+        <p>Apenas usuários com e-mail acadêmico verificado.</p>
+      </div>
+
+      <div class="card">
+        <i class="fa-solid fa-comments"></i>
+        <h3>Chat Integrado</h3>
+        <p>Combine detalhes do ponto de encontro direto pelo app.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>Dúvidas Frequentes</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Como funciona a divisão de custos?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>O valor pode ser dividido entre os passageiros de forma justa, considerando distância, combustível e quantidade de alunos na carona.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        É seguro viajar com outros alunos?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Sim. A plataforma prioriza usuários verificados com e-mail acadêmico, além de permitir avaliação de perfis e confirmação antes da viagem.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">
+      <i class="fa-solid fa-car-side"></i>
+  GoCampus
+    </div>
+
+    <p>© 2026 GoCampus.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
