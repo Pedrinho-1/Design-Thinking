@@ -1,96 +1,81 @@
-const perfilBtns = document.querySelectorAll(".perfil-btn");
-const perfilTexto = document.getElementById("perfilTexto");
+if (localStorage.getItem("usuarioLogado") !== "true") {
+  window.location.href = "login.html";
+}
 
-const loginForm = document.getElementById("loginForm");
-const formCadastro = document.getElementById("formCadastro");
+const perguntasFaq = document.querySelectorAll(".faq-question");
 
-const abrirCadastro = document.getElementById("abrirCadastro");
-const voltarLogin = document.getElementById("voltarLogin");
+perguntasFaq.forEach(pergunta => {
+  pergunta.addEventListener("click", () => {
+    const item = pergunta.parentElement;
 
-const mostrarSenha = document.getElementById("mostrarSenha");
-const senhaInput = document.getElementById("senha");
+    document.querySelectorAll(".faq-item").forEach(faq => {
+      if (faq !== item) {
+        faq.classList.remove("ativo");
+      }
+    });
 
-let perfilSelecionado = "aluno";
-
-perfilBtns.forEach((botao) => {
-  botao.addEventListener("click", () => {
-    perfilBtns.forEach((btn) => btn.classList.remove("ativo"));
-
-    botao.classList.add("ativo");
-    perfilSelecionado = botao.dataset.perfil;
-
-    perfilTexto.textContent =
-      perfilSelecionado === "aluno" ? "Aluno" : "Motorista";
+    item.classList.toggle("ativo");
   });
 });
 
-mostrarSenha.addEventListener("click", () => {
-  if (senhaInput.type === "password") {
-    senhaInput.type = "text";
-    mostrarSenha.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+const sairBtn = document.getElementById("sairBtn");
+
+sairBtn.addEventListener("click", () => {
+  localStorage.removeItem("usuarioLogado");
+  localStorage.removeItem("perfilUsuario");
+  window.location.href = "login.html";
+});
+
+const btnOferecer = document.getElementById("btnOferecer");
+const btnBuscar = document.getElementById("btnBuscar");
+const caronaBox = document.getElementById("caronaBox");
+
+btnOferecer.addEventListener("click", () => {
+  caronaBox.classList.add("ativo");
+
+  caronaBox.innerHTML = `
+    <h3>Oferecer carona</h3>
+    <input type="text" placeholder="Ponto de saída">
+    <input type="text" placeholder="Destino">
+    <input type="time">
+    <select>
+      <option>Quantidade de vagas</option>
+      <option>1 vaga</option>
+      <option>2 vagas</option>
+      <option>3 vagas</option>
+      <option>4 vagas</option>
+    </select>
+    <button onclick="confirmarCarona('oferecida')">Publicar carona</button>
+  `;
+});
+
+btnBuscar.addEventListener("click", () => {
+  caronaBox.classList.add("ativo");
+
+  caronaBox.innerHTML = `
+    <h3>Buscar carona</h3>
+    <input type="text" placeholder="Onde você está?">
+    <input type="text" placeholder="Para onde deseja ir?">
+    <input type="time">
+    <select>
+      <option>Preferência</option>
+      <option>Carona mais próxima</option>
+      <option>Menor custo</option>
+      <option>Motorista melhor avaliado</option>
+    </select>
+    <button onclick="confirmarCarona('solicitada')">Solicitar carona</button>
+  `;
+});
+
+function confirmarCarona(tipo) {
+  if (tipo === "oferecida") {
+    alert("Sua carona foi publicada com sucesso!");
   } else {
-    senhaInput.type = "password";
-    mostrarSenha.innerHTML = '<i class="fa-solid fa-eye"></i>';
-  }
-});
-
-abrirCadastro.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  loginForm.classList.add("oculto");
-  formCadastro.classList.remove("oculto");
-});
-
-voltarLogin.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  formCadastro.classList.add("oculto");
-  loginForm.classList.remove("oculto");
-});
-
-formCadastro.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const nomeCadastro = document.getElementById("nomeCadastro").value.trim();
-  const emailCadastro = document.getElementById("emailCadastro").value.trim();
-  const senhaCadastro = document.getElementById("senhaCadastro").value.trim();
-
-  if (nomeCadastro === "" || emailCadastro === "" || senhaCadastro === "") {
-    alert("Preencha todos os campos do cadastro.");
-    return;
+    alert("Sua solicitação de carona foi enviada!");
   }
 
-  localStorage.setItem("nomeUsuario", nomeCadastro);
-  localStorage.setItem("emailUsuario", emailCadastro);
-  localStorage.setItem("senhaUsuario", senhaCadastro);
-
-  alert("Cadastro realizado com sucesso!");
-
-  formCadastro.classList.add("oculto");
-  loginForm.classList.remove("oculto");
-});
-
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const email = document.getElementById("email").value.trim();
-  const senha = senhaInput.value.trim();
-
-  const emailSalvo = localStorage.getItem("emailUsuario");
-  const senhaSalva = localStorage.getItem("senhaUsuario");
-
-  if (email === "" || senha === "") {
-    alert("Preencha todos os campos.");
-    return;
-  }
-
-  if (email !== emailSalvo || senha !== senhaSalva) {
-    alert("E-mail ou senha incorretos. Cadastre-se primeiro.");
-    return;
-  }
-
-  localStorage.setItem("usuarioLogado", "true");
-  localStorage.setItem("perfilUsuario", perfilSelecionado);
-
-  window.location.href = "index.html";
-});
+  caronaBox.innerHTML = `
+    <h3>Pronto!</h3>
+    <p>Agora o RideAcad irá procurar a melhor combinação para você.</p>
+  `;
+}
